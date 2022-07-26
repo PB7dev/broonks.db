@@ -109,8 +109,8 @@ class BroonksDatabase {
     //Outros
     get ping() {
         let inicio = Date.now()
-        this.set('((((((PING))))))_internal_denkydb'+inicio, 0)
-        this.delete('((((((PING))))))_internal_denkydb'+inicio)
+        this.set('((((((PING))))))_internal_BroonksDatabase'+inicio, 0)
+        this.delete('((((((PING))))))_internal_BroonksDatabase'+inicio)
         return Date.now()-inicio
     }
 
