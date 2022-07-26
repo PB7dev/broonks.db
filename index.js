@@ -2,14 +2,15 @@ const fs = require('fs')
 
 class BroonksDatabase {
     constructor(local) {
+        var local = './broonksdb.json'
         if(!local) return this._throwMissing('local', 'criação de database')
-        if (!fs.existsSync(local)) fs.writeFileSync(local, '{"_denkyDatabaseVersion":2}');
+        if (!fs.existsSync(local)) fs.writeFileSync(local, '{"_BroonksDatabase":2}');
         this.conteudo;
         this.local = local;
         try {
             this.conteudo = JSON.parse(fs.readFileSync(local));
         } catch(e) {
-            throw new Error('Erro ao carregar banco de dados ' + e)
+            throw new Error('Erro ao carregar banco de dados (exclua o arquivo .json e tente novamente)' + e)
         }
     }
 
@@ -60,7 +61,11 @@ class BroonksDatabase {
     //Números
     add(nome, valor = 1) {
         if(!nome) return this._throwMissing('nome', 'add')
-        if(typeof this._obter(nome) != 'number') throw new Error('O valor já definido não é um número ou não foi definido.');
+        if(typeof this._obter(nome) != 'number') {
+            this.conteudo[nome] = valor
+            this._escrever()
+            return this.conteudo[nome]  
+        };
         this.conteudo[nome] = this.conteudo[nome] + valor
         this._escrever()
         return this.conteudo[nome] 
@@ -68,7 +73,7 @@ class BroonksDatabase {
 
     remove(nome, valor = 1) {
         if(!nome) return this._throwMissing('nome', 'remove')
-        if(typeof this._obter(nome) != 'number') throw new Error('O valor já definido não é um número ou não foi definido.');
+        if(typeof this._obter(nome) != 'number') return;
         this.conteudo[nome] = this.conteudo[nome] - valor
         this._escrever()
         return this.conteudo[nome] 
