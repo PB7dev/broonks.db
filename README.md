@@ -5,7 +5,7 @@ Inspirado no [quick.db](https://www.npmjs.com/package/quick.db) e no [Enmap](htt
 
 ---
 
-## Instalação e suporte
+## Instalação
 Instale a database com `npm install broonks.db`
 
 ---
@@ -15,7 +15,7 @@ Instale a database com `npm install broonks.db`
 const DatabaseManager = require('broonks.db')
 
 //Essa será a varíavel que você usará para manipular a Database.
-const Database = new DatabaseManager('./banco.json')
+const Database = new DatabaseManager()
 
 //Define a chave 'pessoas bonitas' para uma lista com pb7 e broonks
 Database.set('pessoas bonitas', ['pb7', 'broonks'])
