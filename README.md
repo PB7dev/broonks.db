@@ -1,7 +1,7 @@
 ## Broonks Database
 Um simples banco de dados em JSON com o foco em performance e simplicidade.
 
-Inspirado no [quick.db](https://www.npmjs.com/package/quick.db) e no [Enmap](https://www.npmjs.com/package/enmap).
+Inspirado no [quick.db](https://www.npmjs.com/package/quick.db) e no [Enmap](https://www.npmjs.com/package/enmap). 
 
 ---
 
